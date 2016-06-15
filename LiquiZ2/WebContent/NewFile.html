@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#create").click(function(){
+	  var result1 = $("input[name='question']").val(); 
+	  var result2 = $("input[name='answer']").val();
+    $("ol").append('<li'+'>'+result1+": "+result2+'</li>');
+    $("ol").append('<ul><input name='+'solve'+'>'+'</ul>');
+      
+  });  
+  
+  $("#delete").click(function(){
+	  var result1 = $("input[name='question']").val(); 
+	    $("li").remove('.'+result1);
+	  });
+  $("#submit").click(function(){
+	  var data="";
+	     $("ol").find("li").each(function(index,value){
+	    	 data+=$(this).text();
+	    	 
+	     })
+	     var data2=data.split(": ");
+	     var data3 = $("input[name='solve']").val(); 
+    	 if (data2[1]==data3){
+    		 alert(data2[1]+" "+data3);
+    		 alert("right");
+    	 }
+    	 else{
+    		 alert(data2[1]+" "+data3);
+    		 alert("wrong");
+    	 }
+  
+  });
+  
+});
+</script>
+</head>
+
+<body>
+
+<form>
+Question:
+<input type="text" name="question" size=40>
+<br />
+Answer:
+<input type="text" name="answer" size=40 style="height:200px">
+</form>
+
+
+<ol>
+</ol>
+
+<button id="create">create</button>
+<button id="delete">delete</button>
+<button id="submit">submit</button>
+</body>
+</html>
